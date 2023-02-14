@@ -1,0 +1,10 @@
+.project {
+  display: flex;
+  flex-flow: column nowrap;
+  border: 1px solid red;
+}
+.item {
+  display: flex;
+  flex-flow: row nowrap;
+  border: 1px solid blue;
+}
