@@ -9,19 +9,24 @@ function Project(
   if (list.length !== 0) {
     list.forEach((item) => addItem(item));
   }
+
   function addItem(item) {
     todoList.push(item);
   }
+
   function removeItem(item) {
     _.remove(todoList, (todo) => item === todo);
   }
+
   function getItems() {
     return [...todoList];
   }
+
   function propertiesOnly() {
     const JSONList = todoList.map((item) => item.propertiesOnly());
     return { title, description, todoList: JSONList };
   }
+  
   return {
     title,
     description,
