@@ -302,7 +302,7 @@ function DisplayManager() {
     formContainer.appendChild(form);
 
     const formTitle = document.createElement('div');
-    formTitle.textContent = 'Add an item';
+    formTitle.textContent = 'Add a project';
     formTitle.classList.add('form-title');
     form.appendChild(formTitle);
 
