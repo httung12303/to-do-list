@@ -1,10 +1,231 @@
-.project {
+:root {
+  --main-color: #2a3d45;
+  --white: #fafafa;
+  --side-bar-bg: #d6cfcb;
+  --cancel-btn-color: #F7717D;
+  --confirm-btn-color:#23CE6B;
+  --proj-hover-color: #B9A394;
+  --content-color: #DDDFDF;
+}
+@font-face {
+  font-family: 'Varela Round';
+  src: url('./fonts/Varela_Round/VarelaRound-Regular.ttf');
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  position: relative;
+  display: grid;
+  height: 100vh;
+  grid-template-rows: repeat(8, 1fr);
+  grid-template-columns: 15% 85%;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 1.1rem;
+  background-color: var(--content-color);
+}
+button {
+  appearance: none;
+  border: none;
+}
+header {
+  grid-column: 1 / -1;
+  grid-row: 1 / 1;
+  background-color: var(--main-color);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  padding: 0 2rem;
+}
+.sidebar {
+  grid-column: 1/ 1;
+  grid-row: 2 / -1;
   display: flex;
   flex-flow: column nowrap;
-  border: 1px solid red;
+  padding: 1rem 2rem;
+  background-color: var(--side-bar-bg);
+}
+.default-projects,
+.optional-projects {
+  display: flex;
+  flex-flow: column nowrap;
+}
+.sidebar-project {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  transition: all 0.4s ease-in-out;
+}
+.remove-prj-btn {
+  background-color: transparent;
+  border: none;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  height: 1rem;
+}
+.sidebar-project:hover > .remove-prj-btn {
+  display: flex;
+  transform: scale(1);
+}
+.sidebar-project:hover {
+  background-color: var(--proj-hover-color);
+  transform: scale(1.1);
+  transition: all 0.4s ease-in-out;
+}
+.add-proj-btn {
+  margin-top: auto;
+  height: 4rem;
+  width: 4rem;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--main-color);
+  font-size: 3.5rem;
+  display: flex;
+  justify-content: center;
+  color: var(--white);
+  transition: all 0.4s ease-in-out;
+}
+.add-proj-btn:hover {
+  transform: scale(1.1);
+  transition: all 0.4s ease-in-out;
+}
+.project-tab {
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 1rem 25%;
+}
+.add-item-btn {
+  margin-top: 1.5rem;
+  background-color: transparent;
+  border: none;
+  width: fit-content;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0;
 }
 .item {
   display: flex;
   flex-flow: row nowrap;
-  border: 1px solid blue;
+  gap: 1rem;
+}
+.item-date {
+  margin-left: auto;
+}
+.project-tab {
+  grid-column: 2 / -1;
+  grid-row: 2 / -1;
+}
+.form-container {
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+.active {
+  display: flex;
+}
+.hidden {
+  display: none;
+}
+input[type='checkbox'] {
+  appearance: none;
+  background-color: var(--white);
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  position: relative;
+  outline: 2px solid black;
+}
+input[type='checkbox']::before {
+  content: ' ';
+  position: absolute;
+  width: 0.7rem;
+  height: 0.7rem;
+  top: 0.2rem;
+  left: 0.2rem;
+  display: block;
+  border-radius: 50%;
+  background-color: black;
+  transform: scale(0);
+  transition: all 0.4s ease-in-out;
+}
+input[type='checkbox']:checked::before {
+  transition: all 0.4s ease-in-out;
+  transform: scale(1);
+}
+.item-del-btn {
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1.1rem;
+}
+.form {
+  display: flex;
+  flex-flow: column nowrap;
+  width: min(24rem, 50%);
+  background-color: var(--main-color);
+  gap: 1rem;
+  padding: 2rem;
+  align-items: center;
+  border-radius: 1rem;
+  color: var(--white);
+}
+.form-title {
+  font-size: 2rem;
+}
+.form-btn-container {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+.form input[type="text"],
+.form input[type="date"] {
+  appearance: none;
+  width: 100%;
+  border: none;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.form button {
+  width: 40%;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  border: 3px solid var(--white);
+  transition: all 0.4s ease-in-out;
+}
+.form button:hover {
+  transform: scale(1.1);
+  transition: all 0.4s ease-in-out;
+}
+.form-confirm-btn {
+  background-color: var(--confirm-btn-color);
+}
+.form-cancel-btn {
+  background-color: var(--cancel-btn-color);
+}
+.item input[type="date"] {
+  margin-left: auto;
+}
+.item-container {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.75rem;
+}
+.proj-description {
+  margin-bottom: 1.5rem;
 }
