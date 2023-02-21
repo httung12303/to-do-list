@@ -71,7 +71,6 @@ function DisplayManager() {
     if (date === 'No due date') {
       return date;
     }
-    console.log(date);
     return format(new Date(date), 'dd/MM/yyyy');
   }
 
@@ -90,6 +89,14 @@ function DisplayManager() {
     title.classList.add('item-title');
     title.textContent = item.title;
     title.setAttribute('for', checkbox.id);
+
+    const descriptionLabel = document.createElement('div');
+    descriptionLabel.classList.add('item-desc-label');
+    descriptionLabel.textContent = 'Details';
+
+    const description = document.createElement('div');
+    description.classList.add('item-desc');
+    description.textContent = item.description;
 
     const dueDate = document.createElement('div');
     dueDate.classList.add('item-date');
@@ -117,6 +124,8 @@ function DisplayManager() {
 
     itemEle.appendChild(checkbox);
     itemEle.appendChild(title);
+    itemEle.appendChild(descriptionLabel);
+    itemEle.appendChild(description);
     itemEle.appendChild(dueDate);
     itemEle.appendChild(datePicker);
     itemEle.appendChild(delBtn);

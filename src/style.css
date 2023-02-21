@@ -111,9 +111,8 @@ header {
   display: flex;
   flex-flow: row nowrap;
   gap: 1rem;
-}
-.item-date {
-  margin-left: auto;
+  position: relative;
+  align-items: center;
 }
 .project-tab {
   grid-column: 2 / -1;
@@ -145,6 +144,7 @@ input[type='checkbox'] {
   border-radius: 50%;
   position: relative;
   outline: 2px solid black;
+  flex: 0 0 auto;
 }
 input[type='checkbox']::before {
   content: ' ';
@@ -218,9 +218,6 @@ input[type='checkbox']:checked::before {
 .form-cancel-btn {
   background-color: var(--cancel-btn-color);
 }
-.item input[type="date"] {
-  margin-left: auto;
-}
 .item-container {
   display: flex;
   flex-flow: column nowrap;
@@ -228,4 +225,29 @@ input[type='checkbox']:checked::before {
 }
 .proj-description {
   margin-bottom: 1.5rem;
+}
+.item-desc-label {
+  margin-left: auto;
+  opacity: 0.6;
+  border: 1px solid var(--main-color);
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+}
+.item-desc {
+  position: absolute;
+  top: 120%;
+  right: 0;
+  padding: 1rem;
+  max-width: max(20%, 10rem);
+
+  overflow: hidden;
+  background-color: var(--main-color);
+  opacity: 0.9;
+  color: var(--white);
+
+  border-radius: 0.5rem;
+  display: none;
+}
+.item-desc-label:hover + .item-desc {
+  display: block;
 }
